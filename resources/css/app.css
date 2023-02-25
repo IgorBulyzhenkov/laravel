@@ -1,0 +1,16 @@
+.header{
+    height: 50px;
+    position: fixed;top: 0;z-index: 3;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aqua;
+}
+
+.list{
+    display: flex;
+}
+.item:not(:last-child){
+    margin-right: 10px;
+}
