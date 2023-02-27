@@ -25,9 +25,19 @@
              border-bottom: 1px solid;"
 >
     <nav>
-        <ul>
+        <ul style="display: flex;">
+            <li style="margin-right: 10px;">
+                <button type="button" class="btn"><a href="/user/login" >Login</a></button>
+            </li>
+            <li style="margin-right: 10px;">
+                <button type="button" class="btn">
+                    <a href="/user/singup" >singup</a>
+                </button>
+            </li>
             <li>
-                <a href="/" >Home</a>
+                <button type="button" class="btn">
+                    <a href="/user" >user</a>
+                </button>
             </li>
         </ul>
     </nav>

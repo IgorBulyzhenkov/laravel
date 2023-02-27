@@ -26,26 +26,31 @@
     >
         <a href="{{route('home')}}"></a>
         <nav>
-{{--            <ul style="display: flex;">--}}
-{{--                <li style="margin-right: 10px;">--}}
-{{--                    <button type="button" class="btn"><a href="{{route('login')}}" >Login</a></button>--}}
-{{--                </li>--}}
-{{--                <li style="margin-right: 10px;">--}}
-{{--                    <button type="button" class="btn">--}}
-{{--                        <a href="{{route('contact')}}" >Contact</a>--}}
-{{--                    </button>--}}
-{{--                </li>--}}
-{{--                <li style="margin-right: 10px;">--}}
-{{--                    <button type="button" class="btn">--}}
-{{--                        <a href="{{route('singup')}}" >singup</a>--}}
-{{--                    </button>--}}
-{{--                </li>--}}
-{{--                <li>--}}
-{{--                    <button type="button" class="btn">--}}
-{{--                        <a href="{{route('user')}}" >user</a>--}}
-{{--                    </button>--}}
-{{--                </li>--}}
-{{--            </ul>--}}
+            <ul style="display: flex;">
+                <li style="margin-right: 10px;">
+                    <button type="button" class="btn"><a href="/user/login" >Login</a></button>
+                </li>
+                <li style="margin-right: 10px;">
+                    <button type="button" class="btn">
+                        <a href="{{route('contact')}}" >Contact</a>
+                    </button>
+                </li>
+                <li style="margin-right: 10px;">
+                    <button type="button" class="btn">
+                        <a href="/user/singup" >singup</a>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn">
+                        <a href="/user" >user</a>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn">
+                        <a href="{{route('posts.index')}}" >POSTS</a>
+                    </button>
+                </li>
+            </ul>
         </nav>
     </header>
     <h1>Home !</h1>

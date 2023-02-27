@@ -1,23 +1,27 @@
 <?php
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 
-Route::get('user/{show?}',[PageController::class,'show']);
+Route::get('user/{show?}',[UserController::class,'show']);
+
+Route::match(['post','get'],'/contact',function (){
+    if(!empty($_POST)){
+        dump($_POST);
+    }
+    return view('contact');
+})->name('contact');
+
+Route::resource('/posts', PostController::class);
+
+Route::fallback(function (){
+    abort('404','NOT FOUND');
+});
 
 //Route::get('user/singup',[PageController::class,'singup'])->name('singup');
 //
@@ -73,6 +77,3 @@ Route::get('user/{show?}',[PageController::class,'show']);
 //    })->name('post-edit');
 //});
 
-Route::fallback(function (){
-    abort('404','NOT FOUND');
-});
