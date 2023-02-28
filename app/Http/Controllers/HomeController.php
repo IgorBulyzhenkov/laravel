@@ -21,7 +21,7 @@ class HomeController extends Controller
 //        DB::delete("DELETE FROM posts WHERE id = :id",["id" => 6 ]);
 
         $data = DB::select("SELECT * FROM posts");
-        dump($data); 
+        dump($data);
         return view('home');
     }
 }
