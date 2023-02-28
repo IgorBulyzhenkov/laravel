@@ -16,6 +16,7 @@
     </style>
 </head>
 <body class="antialiased" style="padding-top: 100px">
+<div class="container">
     <header  style="height: 50px;
             position: fixed;top: 0;z-index: 3;
             width: 100%;
@@ -54,5 +55,6 @@
         </nav>
     </header>
     <h1>Home !</h1>
+</div>
 </body>
 </html>
