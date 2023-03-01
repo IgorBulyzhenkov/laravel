@@ -11,7 +11,17 @@ class UserController extends Controller
 {
     public function show($show = 'index'): Factory|View|Application
     {
-        return view("user.$show");
+
+        $title = match ($show){
+            'login' => 'Login',
+            'singup' => 'Sing Up',
+            'car' => 'Add car',
+            default => 'User Cabinet'
+        };
+
+        $name = "Igor";
+
+        return view("user.$show",compact('title','name'));
     }
 
 }

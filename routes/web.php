@@ -8,7 +8,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 
-Route::get('user/{show?}',[UserController::class,'show']);
+Route::match(['post','get'],'user/{show?}',[UserController::class,'show']);
 
 Route::match(['post','get'],'/contact',function (){
     if(!empty($_POST)){
