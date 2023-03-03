@@ -12,7 +12,7 @@
 
     <section class="py-5 text-center container">
         <h1>LOGIN PAGE</h1>
-        <form action="{{route('contact')}}" method="post" style="
+        <form action="/" method="post" style="
     border:1px solid;
     border-radius: 5px;
     display: flex;
