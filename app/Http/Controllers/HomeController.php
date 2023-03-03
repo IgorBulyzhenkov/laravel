@@ -22,7 +22,6 @@ class HomeController extends Controller
 //       echo Cache::get('test');
 
        if (Cache::has('posts')){
-           echo "no mysql";
            $posts = Cache::get('posts');
        }else{
            $posts = Post::query()

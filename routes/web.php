@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -22,6 +24,7 @@ Route::resource('/posts', PostController::class);
 
 Route::get('/create/add-car',[CarController::class,'create'])->name('car.create');
 Route::post('/', [CarController::class,'store'])->name('car.store');
+Route::match(['get','post'],'/send', [ContactController::class,'index'])->name('send');
 
 Route::fallback(function (){
     abort('404','NOT FOUND');

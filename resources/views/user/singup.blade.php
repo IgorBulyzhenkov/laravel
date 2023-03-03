@@ -13,18 +13,19 @@
     <section class="py-5 text-center container">
         <h1>SIGN UP</h1>
 
-        <form action="/" method="post" style="
-    border:1px solid;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    width: 300px;
-    margin: 0 auto;
-    margin-top: 20px;
-    ">
+    <form action="/" method="post" style="
+        background-color: #f0f2fa;
+        border:1px solid;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 20px;
+        ">
             @csrf
             <label style="margin-bottom: 10px;">
                 Name
