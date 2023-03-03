@@ -26,15 +26,15 @@
                                 <a href="{{route('home')}}" class="nav-link link-light">Home</a>
                             </button>
                         </li>
-                        @if($name)
+                        @if(\Illuminate\Support\Facades\Cookie::get('name'))
                             <li class="nav-item" style="margin-right: 10px;">
                                 <button type="button" class="bg-transparent border-1 border-light border-opacity-50 rounded-3" >
-                                    <a href="/user" class="nav-link link-light">{{$name}}</a>
+                                    <a href="/user" class="nav-link link-light">{{\Illuminate\Support\Facades\Cookie::get('name')}}</a>
                                 </button>
                             </li>
                             <li class="nav-item">
                                 <button type="button" class="bg-transparent border-1 border-light border-opacity-50 rounded-3" >
-                                    <a href="/user/car" class="nav-link link-light">Додати авто</a>
+                                    <a href="{{route('car.create')}}" class="nav-link link-light">Додати авто</a>
                                 </button>
                             </li>
                         @else
