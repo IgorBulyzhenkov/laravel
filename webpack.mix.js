@@ -12,9 +12,4 @@ mix.styles([
     'resources/front/css/bootstrap-utilities.rtl.css',
 ],'public/css/styles.css');
 
-mix.scripts([
-    'resources/front/js/bootstrap.bundle.js',
-    'resources/front/js/bootstrap.esm.js',
-    'resources/front/js/bootstrap.js',
-],'public/js/scripts.js');
 

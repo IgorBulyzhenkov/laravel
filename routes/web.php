@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
-
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -17,13 +16,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/cabinet',[UserController::class,'index'])->name('user');
 });
 
-
 Route::group(['middleware' => 'guest'], function () {
     Route::post('/user/create', [UserController::class,'store'])->name('user.store');
     Route::post('/login',[UserController::class,'login'])->name('login');
     Route::get('/user/{show?}',[UserController::class,'show']);
 });
-
 
 Route::fallback(function (){
     abort('404','NOT FOUND');
