@@ -14,22 +14,20 @@ use Illuminate\Support\Facades\Validator;
 class CarController extends Controller
 {
 
-    public function create(): Factory|View|Application
+    public function create(): \Illuminate\Foundation\Application|Factory|View|Redirector|RedirectResponse|Application
     {
         $title = 'Add car';
         if ($_POST){
             dump($_POST['img']);
         }
-        $name = "Igor";
-        return view('car.addCar',compact('title','name'));
+        return view('car.addCar',compact('title'));
     }
 
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): Redirector|Application|RedirectResponse
+    public function store(Request $request): \Illuminate\Foundation\Application|Redirector|Application|RedirectResponse
     {
-
         $car = new Car();
 
         Validator::make($request->all(),$car->rules(),$car->messageError())->validate();

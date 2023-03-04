@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-@section('page')
-    Add CAR
-@endsection
-
 @section('title')
     {{$title}}
 @endsection
@@ -44,7 +40,7 @@
                     </label>
                     <label class="mt-2">
                         Тип транспорту
-                        <select name="type_car" style="background-color: #ffffff; text-align: left" class=" mt-2 input-group input-group-text" value="{{ old('type_car') }}">
+                        <select name="type_car" style="background-color: #ffffff; text-align: left" class=" mt-2 input-group input-group-text">
                             @foreach($typeCar as $type)
                                 <option value="{{$type}}"
                                         @if( old('type_car') === $type) selected  @endif
@@ -75,7 +71,7 @@
                     </label>
                     <label class="mt-2">
                         Регіон
-                        <select name="region" style="background-color: #ffffff; text-align: left" class="mt-2 input-group input-group-text" value="{{ old('region') }}">
+                        <select name="region" style="background-color: #ffffff; text-align: left" class="mt-2 input-group input-group-text">
                             @foreach($region as $reg)
                                 <option value="{{$reg}}"
                                         @if(old('region') === $reg) selected  @endif
