@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-  public function index(Request $request): Application|Factory|View|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    public function index(Request $request): Application|Factory|View|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
   {
-      if ($request->method() === 'POST'){
+      if ($request->method() === 'POST') {
           $body = "<p><b>Ім'я</b> {$request->input('name')} </p>";
           $body .= "<p><b>E-mail</b> {$request->input('email')} </p>";
           $body .= "<p>Для того щоб підтвердити емейл перейдіть за посиланням

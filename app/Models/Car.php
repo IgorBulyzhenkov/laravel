@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use JetBrains\PhpStorm\ArrayShape;
 
 class Car extends Model
 {
@@ -50,8 +50,8 @@ class Car extends Model
         DB::table('car')->insert([
             'img' => $request->input('img'),
             'name_img' => $request->input('img'),
-            'user_name' =>"Igor",
-            'user_id' => '34',
+            'user_name' =>Auth::user()->name,
+            'user_id' => Auth::user()->id,
             'type_car' => $request->input('type_car'),
             'car_brand' => $request->input('car_brand'),
             'car_model' => $request->input('car_model'),
