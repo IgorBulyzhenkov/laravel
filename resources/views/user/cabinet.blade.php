@@ -23,7 +23,7 @@
                         <form action="/delete/{{$car->id}}&{{$car->user_id}}" method="post" style="text-align: center; margin-top: 5px; margin-bottom: 5px">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-info">
+                            <button type="submit" class="btn" style="background: #db5c4c;color: #ffffff">
                                 Видалити
                             </button>
                         </form>
