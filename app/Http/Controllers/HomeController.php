@@ -14,7 +14,7 @@ class HomeController extends Controller
 
    public function index(Request $request): Factory|View|Application | array
     {
-        $title = 'Home';
+        $title = 'Auto.RIA ™';
 
            $cars = Car::query()
                ->orderBy('id','desc')

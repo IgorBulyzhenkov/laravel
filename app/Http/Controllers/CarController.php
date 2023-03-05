@@ -45,8 +45,8 @@ class CarController extends Controller
             $origNameImg = $request->file('img')->getClientOriginalName();
             $car->saveCar($request,$pathImg,$origNameImg);
 
-            $request->session()->flash('success', "Данні збереженні!");
-            return redirect('/user');
+            $request->session()->flash('success', "Об'яву успішно додано!");
+            return redirect(route('user'));
         }
         $request->session()->flash('error', "Данні не збереженні!");
         return redirect('/create/add-car');
