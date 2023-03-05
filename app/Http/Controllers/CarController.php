@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CarController extends Controller
@@ -16,6 +17,12 @@ class CarController extends Controller
 
     public function create(): \Illuminate\Foundation\Application|Factory|View|Redirector|RedirectResponse|Application
     {
+        $carCountUser = Car::query()->where('user_id' , Auth::user()->id)->count();
+
+        if($carCountUser >= 3){
+            return redirect(route('info'));
+        }
+
         $title = 'Add car';
         if ($_POST){
             dump($_POST['img']);
@@ -32,8 +39,16 @@ class CarController extends Controller
 
         Validator::make($request->all(),$car->rules(),$car->messageError())->validate();
 
-        $car->saveCar($request);
-        $request->session()->flash('success', "Данні збереженні!");
-        return redirect('/user');
+        if ($request->hasFile('img')){
+            $folder = date('Y-M-d');
+            $pathImg = $request->file('img')->store("images/{$folder}");
+            $origNameImg = $request->file('img')->getClientOriginalName();
+            $car->saveCar($request,$pathImg,$origNameImg);
+
+            $request->session()->flash('success', "Данні збереженні!");
+            return redirect('/user');
+        }
+        $request->session()->flash('error', "Данні не збереженні!");
+        return redirect('/create/add-car');
     }
 }

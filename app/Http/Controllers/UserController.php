@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -24,6 +25,12 @@ class UserController extends Controller
             ->get();
 
         return view("user.cabinet",compact('title','cars'));
+    }
+
+    public function info(): Factory|\Illuminate\Foundation\Application|View|Application
+    {
+        $title = 'Info';
+        return view('user.info',compact('title'));
     }
 
     public function show( $show = 'login' ): Factory|\Illuminate\Foundation\Application|View|Application
@@ -80,5 +87,29 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect('/user/login');
+    }
+
+    public function delete($id,$user_id) {
+        $car = Car::query()->where([
+            'id' => $id,
+            'user_id' => $user_id
+            ])
+            ->get();
+//        dump($car[0]->img);
+//        dd(File::exists("storage/{$car[0]->img}"));
+        if ($car[0]->img && File::exists("storage/{$car[0]->img}")){
+
+            File::delete("storage/{$car[0]->img}");
+            Car::query()
+                ->where([
+                'id' => $id,
+                'user_id' => $user_id
+                ])
+                ->delete();
+
+            return redirect(route('user'))->with('success',"Успішно видалено");
+        }
+
+        return redirect(route('user'))->with('error',"Некоректні дані");
     }
 }

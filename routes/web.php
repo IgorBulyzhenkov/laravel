@@ -14,6 +14,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/', [CarController::class,'store'])->name('car.store');
     Route::match(['get','post'],'/send', [ContactController::class,'index'])->name('send');
     Route::get('/user/cabinet',[UserController::class,'index'])->name('user');
+    Route::get('/user/info',[UserController::class,'info'])->name('info');
+    Route::delete('/delete/{id}&{user_id}',[UserController::class,'delete'])->name('delete');
 });
 
 Route::group(['middleware' => 'guest'], function () {
