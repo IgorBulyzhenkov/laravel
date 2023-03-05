@@ -30,17 +30,17 @@
                 <h1>Форма оголошення</h1>
             </div>
             <div class="card-body">
-                <form method="post" action="{{route('car.store')}}" style="display: flex" class="row">
+                <form method="post" action="{{route('car.store')}}" style="display: flex" class="row" enctype="multipart/form-data">
                     @csrf
-                    <label class="mt-2">
-                        <input type="file" class="@error('img') is-invalid @enderror" name="img">
+                    <label class="mt-2 w-75" >
+                        <input type="file" class="@error('img') is-invalid @enderror form-control" name="img">
                         @error('img')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                         @enderror
                     </label>
                     <label class="mt-2">
                         Тип транспорту
-                        <select name="type_car" style="background-color: #ffffff; text-align: left" class=" mt-2 input-group input-group-text">
+                        <select name="type_car" style="background-color: #ffffff; text-align: left" class=" mt-2 input-group input-group-text ">
                             @foreach($typeCar as $type)
                                 <option value="{{$type}}"
                                         @if( old('type_car') === $type) selected  @endif
@@ -50,28 +50,28 @@
                     </label>
                     <label class="mt-2">
                         Марка
-                        <input type="text" name="car_brand" placeholder="" style="background-color: #ffffff; text-align: left" class="mt-2 input-group input-group-text @error('car_brand') is-invalid @enderror" value="{{ old('car_brand') }}">
+                        <input type="text" name="car_brand" placeholder="" style="background-color: #ffffff; text-align: left" class="form-control mt-2 input-group input-group-text @error('car_brand') is-invalid @enderror" value="{{ old('car_brand') }}">
                          @error('car_brand')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                          @enderror
                     </label>
                     <label class="mt-2">
                         Модель
-                        <input type="text" name="car_model" placeholder="" style="background-color: #ffffff; text-align: left" class=" @error('car_model') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('car_model') }}">
+                        <input type="text" name="car_model" placeholder="" style="background-color: #ffffff; text-align: left" class="form-control @error('car_model') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('car_model') }}">
                          @error('car_model')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                          @enderror
                     </label>
                     <label class="mt-2">
                         Пробіг
-                        <input type="number" name="run" placeholder="" style="background-color: #ffffff; text-align: left" class=" @error('run') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('run') }}">
+                        <input type="number" name="run" placeholder="" style="background-color: #ffffff; text-align: left" class="form-control @error('run') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('run') }}">
                          @error('run')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                         @enderror
                     </label>
                     <label class="mt-2">
                         Регіон
-                        <select name="region" style="background-color: #ffffff; text-align: left" class="mt-2 input-group input-group-text">
+                        <select name="region" style="background-color: #ffffff; text-align: left" class="mt-2 input-group input-group-text ">
                             @foreach($region as $reg)
                                 <option value="{{$reg}}"
                                         @if(old('region') === $reg) selected  @endif
@@ -81,7 +81,7 @@
                     </label>
                     <label class="mt-2">
                         Місто
-                        <input type="text" name="city" placeholder="" style="background-color: #ffffff; text-align: left" class="@error('city') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('city') }}">
+                        <input type="text" name="city" placeholder="" style="background-color: #ffffff; text-align: left" class="form-control @error('city') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('city') }}">
                          @error('city')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                         @enderror
@@ -98,7 +98,7 @@
                     </label>
                     <label class="mt-2">
                         Ціна
-                        <input type="number" name="price" placeholder="" style="background-color: #ffffff; text-align: left" class="@error('price') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('price') }}">
+                        <input type="number" name="price" placeholder="" style="background-color: #ffffff; text-align: left" class=" @error('price') is-invalid @enderror mt-2 input-group input-group-text" value="{{ old('price') }}">
                          @error('price')
                             <div class="invalid-feedback" style="color: red;">{{ $message }}</div>
                         @enderror

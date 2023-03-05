@@ -20,7 +20,7 @@ class Car extends Model
     public function rules(): array
     {
         return [
-            'img' => 'required',
+            'img' => 'required|image',
             'type_car' => 'required',
             'car_brand' => 'required',
             'car_model' => 'required',
@@ -35,6 +35,7 @@ class Car extends Model
     public function messageError(){
         return [
             'img.required' => 'Потрібно додати файл',
+            'img.image' => 'Файл повинен бути зображенням',
             'type_car.required' => 'Поле повинно бути заповнене',
             'car_brand.required' => 'Поле повинно бути заповнене',
             'car_model.required' => 'Поле повинно бути заповнене',
@@ -46,10 +47,10 @@ class Car extends Model
         ];
     }
 
-    public function saveCar($request){
+    public function saveCar($request,$pathImg,$origNameImg){
         DB::table('car')->insert([
-            'img' => $request->input('img'),
-            'name_img' => $request->input('img'),
+            'img' => $pathImg,
+            'name_img' => $origNameImg,
             'user_name' =>Auth::user()->name,
             'user_id' => Auth::user()->id,
             'type_car' => $request->input('type_car'),

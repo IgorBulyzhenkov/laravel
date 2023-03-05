@@ -5,31 +5,24 @@
 @endsection
 
 @section('content')
-        <div class="album py-5 bg-light">
-            <div class="container">
+    <div class="album py-5">
+        <div class="container">
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    @foreach($cars as $car)
-
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $car->car_brand }}</h5>
-                                <p class="card-text">{{ $car->car_model }}</p>
-
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    </div>
-                                        <small class="text-muted">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$car->created_at)->format('d M Y') }}</small>
-                                </div>
-                            </div>
+            <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-2" style="padding: 0">
+                @foreach($cars as $car)
+                    <li class = "col card shadow-sm m-1" style="padding-left: 0; padding-right: 0;width: 200px; height: 185px;" >
+                        <img src='{{ asset("storage/{$car->img}")}}' alt="{{$car->name_img}}" class = "img" />
+                        <div class = "containerText">
+                            <p class = "text">
+                                {{ $car->car_brand }} {{ $car->car_model }} {{ $car->year }}
+                            </p>
+                            <p class = "price" >
+                                {{ $car->price}}$<span class = "run" > {{ $car->run }} тис. км </span>
+                            </p>
                         </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+                    </li>
+                @endforeach
+            </ul>
         </div>
+    </div>
 @endsection
