@@ -66,7 +66,8 @@ class UserController extends Controller
     }
 
 
-    public function login(Request $request){
+    public function login(Request $request): \Illuminate\Foundation\Application|Redirector|RedirectResponse|Application
+    {
 
         $request->validate([
             "email" => 'required|email',
@@ -89,14 +90,14 @@ class UserController extends Controller
         return redirect('/user/login');
     }
 
-    public function delete($id,$user_id) {
+    public function delete($id,$user_id): \Illuminate\Foundation\Application|Redirector|Application|RedirectResponse
+    {
         $car = Car::query()->where([
             'id' => $id,
             'user_id' => $user_id
             ])
             ->get();
-//        dump($car[0]->img);
-//        dd(File::exists("storage/{$car[0]->img}"));
+
         if ($car[0]->img && File::exists("storage/{$car[0]->img}")){
 
             File::delete("storage/{$car[0]->img}");
